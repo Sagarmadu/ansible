@@ -1,0 +1,10 @@
+---
+
+- name: install httpd server and have it started
+  yum: name=httpd state=present
+
+- name: copy httpd.conf to destination
+  template: src=templates/httpd.conf dest=/etc/httpd/conf/httpd.conf owner=root group=root
+
+- name: start httpd service
+  service: name=httpd state=restarted enabled=yes
